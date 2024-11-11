@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitação de Ajuste de Receita</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Solicitação de Ajuste na Receita de Canabidiol</h1>
+    
+    <form>
+      <label for="doctor">Nome do Médico:</label>
+      <input type="text" id="doctor" name="doctor" placeholder="Dr. João Silva" required>
+
+      <label for="patient">Nome do Paciente:</label>
+      <input type="text" id="patient" name="patient" placeholder="Maria Souza" required>
+
+      <h2>Informações da Receita</h2>
+      <label for="original">Concentração Original:</label>
+      <input type="text" id="original" name="original" placeholder="Ex: 20mg/ml" required>
+
+      <label for="new">Nova Concentração:</label>
+      <input type="text" id="new" name="new" placeholder="Ex: 100mg/ml" required>
+
+      <label for="brand">Marca:</label>
+      <input type="text" id="brand" name="brand" placeholder="Canna River" required>
+
+      <label for="dosage">Posologia:</label>
+      <input type="text" id="dosage" name="dosage" placeholder="Quantidade de gotas ajustada" required>
+
+      <button type="button" onclick="generateMessage()">Gerar Mensagem</button>
+    </form>
+
+    <div id="output" style="display: none;">
+      <h2>Mensagem Gerada</h2>
+      <p id="message"></p>
+    </div>
+  </div>
+
+  <script>
+    function generateMessage() {
+      const doctor = document.getElementById('doctor').value;
+      const patient = document.getElementById('patient').value;
+      const original = document.getElementById('original').value;
+      const newConcentration = document.getElementById('new').value;
+      const brand = document.getElementById('brand').value;
+      const dosage = document.getElementById('dosage').value;
+
+      const message = `Olá, Dr. ${doctor}! Aqui é da Weedmed 😊. A paciente ${patient} nos procurou para realizar a importação de canabinoides, mas será necessário um pequeno ajuste na receita, pois nosso produto possui uma concentração diferente da especificada (o que exigiria apenas um ajuste na quantidade de gotas).\n\n
+**ADAPTAÇÃO NECESSÁRIA**\n
+• Marca: ${brand}\n
+• Como deve estar na receita: Canabidiol - ${newConcentration} - Full-Spectrum - [30/60/120ml] - ${brand} - _____ X frascos\n
+• Posologia: ${dosage}\n
+\nObservação: (Deixe em branco, a menos que seja necessário.)`;
+
+      document.getElementById('message').textContent = message;
+      document.getElementById('output').style.display = 'block'; // Exibe a mensagem gerada
+    }
+  </script>
+</body>
+</html>
